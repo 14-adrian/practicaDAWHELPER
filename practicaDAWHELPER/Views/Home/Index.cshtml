@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    IEnumerable<string> strList = new List<string> { "POO", "TW", "MAT3", "FIS1" };
+}
+
+<div class="text-center">
+    <h1 class="display-4">Helpers</h1>
+</div>
+
+<form>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label h4">Nombre Usuario</label>
+        <div class="col-sm-10">
+            @Html.TextBox("txtUserName", "", new {@class="form-control"})
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label h4">Contraseña</label>
+        <div class="col-sm-10">
+            @Html.Password("Contraseña", "", new{@class="form-control"})
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label h4">Genero</label>
+        <div class="col-sm-10">
+            @Html.RadioButton("Genero", "Masculino", true, new{id="masculino"})
+            <label for="genre" class="col-sm-2 col-form-label">Masculino</label>
+            @Html.RadioButton("Genero", "Femenino", false, new{id="femenino"})
+            <label for="genre" class="col-sm-2 col-form-label">Femenino</label>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="addresss" class="col-sm-2 col-form-label h4">Direccion</label>
+        <div class="col-sm-10">
+            @Html.TextArea("Direccion","", new{@class="form-control",id="idDireccion"})
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="pasa" class="col-sm-2 col-form-label h4">Pasatiempos</label>
+        <div class="col-sm-10">
+            @Html.CheckBox("Bailar")
+            <label class="col-sm-2 col-form-label">Bailar</label>
+            @Html.CheckBox("Correr")
+            <label class="col-sm-2 col-form-label">Correr</label>
+            @Html.CheckBox("Escalar")
+            <label class="col-sm-2 col-form-label">Escalar</label>
+            @Html.CheckBox("Peliculas")
+            <label class="col-sm-2 col-form-label">Peliculas</label>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label h4">Curso</label>
+        <div class="col-sm-10">
+            @Html.DropDownList("ddlCurso", new SelectList(strList,
+            strList.FirstOrDefault()), "--Seleccionar curso ----" )
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label h4">Conocimientos</label>
+        <div class="col-sm-10">
+            @Html.ListBox("Seleccionar habilidades", new List<SelectListItem>{
+            new SelectListItem {Text = "C #", Value = "1"},
+            new SelectListItem {Text = "ASP.NET", Value = "2"},
+            new SelectListItem {Text = "ASP.NET Core", Value = "3"},
+            new SelectListItem {Text = "Azure", Value = "4"}
+            })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4"></div>
+        <button class="col-sm-4 btn btn-success">Enviar Datos</button>
+    </div>
+</form>
